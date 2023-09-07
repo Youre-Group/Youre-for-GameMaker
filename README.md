@@ -9,7 +9,8 @@ YOURE Extension for GameMaker Studio
 ### Supported Platforms: 
 Desktop (Windows)
 
-
+### Install
+Download the lastest release and import (Local Package) it to your GameMaker Studio Project
 
 ## Usage
 
