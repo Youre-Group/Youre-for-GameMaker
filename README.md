@@ -4,7 +4,7 @@
 
 
 ### Supported Platforms: 
-Desktop (Windows)
+Desktop (Windows), HTML5
 
 ### Install
 Download the lastest release and import (Local Package) it to your GameMaker Studio Project
@@ -14,19 +14,27 @@ Download the lastest release and import (Local Package) it to your GameMaker Stu
 ```gml
 
 youre_auth =  instance_create_depth(0,0,0,obj_youre_auth);
-youre_auth.init("stage-youre-id.eu.auth0.com","dNiiO1yimIBfQivgiHAZ7aRTwHXhPqcg");
+// Following data is for testing only, YOURE Games will provide you with actual data
+var _domain = "stage-youre-id.eu.auth0.com";
+var _client_id = "{YOURE_CLIENT_ID}";
+var _custom_redirect_url = "{GAME_URL_FOR_REDIRECT}"; // optional
 
+youre_auth.init(_domain,_client_id,_custom_redirect_url);
 
 var _on_auth_success = function(_user_id, _additional_user_info) {
 	show_debug_message("YoureAuthUserId:"+_user_id);
 };
 
-// only windows supports custom size at the moment
+// only windows supported at the moment
 var _width = 640;
 var _height = 750;
 
-youre_auth.authenticate( _width, _height, _on_auth_success
+youre_auth.authenticate( _width, _height, _on_auth_success);
 
+```
+## Force close login layer (only Desktop and Mobile)
+```gml
+youre_auth.close();
 ```
 
 ## Logout
