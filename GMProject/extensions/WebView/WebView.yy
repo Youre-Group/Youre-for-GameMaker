@@ -18,7 +18,7 @@
   "exportToGame": true,
   "extensionVersion": "1.0.0",
   "files": [
-    {"resourceType":"GMExtensionFile","resourceVersion":"1.0","name":"","constants":[],"copyToTargets":12,"filename":"WebView.ext","final":"","functions":[
+    {"resourceType":"GMExtensionFile","resourceVersion":"1.0","name":"","constants":[],"copyToTargets":44,"filename":"WebView.ext","final":"","functions":[
         {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"WebView_Create","argCount":0,"args":[
             1,
           ],"documentation":"","externalName":"WebView_Create","help":"WebView_Create(url)","hidden":false,"kind":4,"returnType":1,},

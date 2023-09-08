@@ -27,6 +27,11 @@ function PKCEHelper() constructor {
 			var _hash = string_sha256(_code_verifier)
 			return HexToBase64(string(_hash));
 		}
+		else if(os_type == os_android)
+		{
+			return getCodeChallenge(_code_verifier);
+		}
+		
 		return "";
 	}
 	

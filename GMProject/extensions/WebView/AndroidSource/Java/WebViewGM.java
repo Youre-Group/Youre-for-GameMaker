@@ -1,5 +1,5 @@
-package com.company.game;
-import com.company.game.R;
+package ${YYAndroidPackageName};
+import ${YYAndroidPackageName}.R;
 import com.yoyogames.runner.RunnerJNILib;
 
 import android.view.View;

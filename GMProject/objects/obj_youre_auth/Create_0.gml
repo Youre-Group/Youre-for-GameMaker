@@ -1,4 +1,4 @@
-_update_windows_cef = false;
+_update_webview = false;
 
 _request_token_id = -1;
 _request_userinfo_id = -1;
@@ -30,7 +30,7 @@ function logout()
 
 function close()
 {
-	if(os_type == os_windows && os_browser == browser_not_a_browser)
+	if(os_browser == browser_not_a_browser)
 	{
 		_update_windows_cef = false;
 	}
@@ -60,7 +60,7 @@ function _request_token(_auth_code)
 
 function _check_url(_url)
 {
-	if(os_type == os_windows && os_browser == browser_not_a_browser && !_update_windows_cef)
+	if(os_browser == browser_not_a_browser && !_update_webview)
 	{
 		return;
 	}
@@ -72,9 +72,9 @@ function _check_url(_url)
 			WebView_Destroy();
 		}
 		
-		if(os_type == os_windows && os_browser == browser_not_a_browser)
+		if(os_browser == browser_not_a_browser)
 		{
-			_update_windows_cef = false;
+			_update_webview = false;
 		}
 
 		var _auth_code = "";
@@ -112,8 +112,9 @@ function _request_userinfo(_access_token)
 
 function _on_request_userinfo_failed()
 {
-	var _cache = new SessionCache();
-	_cache.clear();
+	ini_open("youre.cache");
+	ini_write_string("session", "access_token", "");
+	ini_close();
 	authenticate(width, height, success_callback);
 }
 
@@ -154,11 +155,12 @@ function _show_login()
 		_canvas = new cef_canvas();
 		_canvas.x = window_get_width()/2-width*0.5;
 		_canvas.y = window_get_height()/2-height*0.5;
-		_update_windows_cef = true;
+		_update_webview = true;
 	} 
 	else if(os_type == os_android)
 	{
 		WebView_Create(_url);
+		_update_webview = true;
 	}
 	else if(os_browser != browser_not_a_browser)
 	{
