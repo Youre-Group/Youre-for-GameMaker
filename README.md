@@ -32,6 +32,11 @@ var _height = 750;
 youre_auth.authenticate( _width, _height, _on_auth_success);
 
 ```
+
+## Known Issues
+* Do not remove the 'locales' directory within 'datafiles' directory. It is needed for Windows Desktop platform.
+
+
 ## Force close login layer (only Desktop and Mobile)
 ```gml
 youre_auth.close();
@@ -41,3 +46,6 @@ youre_auth.close();
 ```gml
 youre_auth.logout();
 ```
+
+## License
+Copyright © 2023, YOURE Games, The MIT License (MIT)
