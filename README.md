@@ -38,8 +38,8 @@ Do not remove the 'locales' directory within 'datafiles' directory.
   
 ## Android Installation:
 When developing with GameMaker Studio for Android, there is an IDE error that does not recognize essential classes. For this reason, please manually copy the following Java files as follows:
-1. Copy 'PATH_TO_YOUR_GAMEMAKER_PROJECT\extensions\WebView\AndroidSource\Java\WebViewGM.java' to 'C:\ProgramData\GameMakerStudio2\Cache\runtimes\\*runtime-2023.6.0.139*\android\runner\ProjectFiles\src\main\java\'
-2. Copy 'PATH_TO_YOUR_GAMEMAKER_PROJECT\extensions\Youre\AndroidSource\Java\YoureGM.java' to 'C:\ProgramData\GameMakerStudio2\Cache\runtimes\\*runtime-2023.6.0.139*\android\runner\ProjectFiles\src\main\java\'
+1. Copy 'PATH_TO_YOUR_GAMEMAKER_PROJECT\extensions\WebView\AndroidSource\Java\\__WebViewGM.java__' to 'C:\ProgramData\GameMakerStudio2\Cache\runtimes\\*runtime-2023.6.0.139*\android\runner\ProjectFiles\src\main\java\'
+2. Copy 'PATH_TO_YOUR_GAMEMAKER_PROJECT\extensions\Youre\AndroidSource\Java\\__YoureGM.java__' to 'C:\ProgramData\GameMakerStudio2\Cache\runtimes\\*runtime-2023.6.0.139*\android\runner\ProjectFiles\src\main\java\'
 
 The directory '*runtime-2023.6.0.139*' within the path provided above may be named differently or similarly on your system.
 
