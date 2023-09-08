@@ -28,6 +28,5 @@
     {"name":"pkce_helper","order":5,"path":"scripts/pkce_helper/pkce_helper.yy",},
     {"name":"WebView","order":1,"path":"extensions/WebView/WebView.yy",},
     {"name":"obj_close_button","order":1,"path":"objects/obj_close_button/obj_close_button.yy",},
-    {"name":"session_cache","order":4,"path":"scripts/session_cache/session_cache.yy",},
   ],
 }

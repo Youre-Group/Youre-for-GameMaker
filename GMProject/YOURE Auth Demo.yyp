@@ -108,7 +108,6 @@
     {"id":{"name":"pkce_helper","path":"scripts/pkce_helper/pkce_helper.yy",},},
     {"id":{"name":"WebView","path":"extensions/WebView/WebView.yy",},},
     {"id":{"name":"obj_close_button","path":"objects/obj_close_button/obj_close_button.yy",},},
-    {"id":{"name":"session_cache","path":"scripts/session_cache/session_cache.yy",},},
     {"id":{"name":"Room1","path":"rooms/Room1/Room1.yy",},},
   ],
   "RoomOrderNodes": [
