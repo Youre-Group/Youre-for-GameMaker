@@ -1,7 +1,4 @@
 # Youre-for-GameMaker
-YOURE Extension for GameMaker Studio
-
-# Youre-for-GameMaker
 
 > The YOURE Sign In Extension for GameMaker Studio provides a simple and convenient way to integrate YOURE sign-in functionality. With this extension code, users can quickly and easily sign in to YOURE and access their accounts without leaving the Game.
 
