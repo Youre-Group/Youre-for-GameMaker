@@ -12,15 +12,26 @@ function PKCEHelper() constructor {
 		}
 		return _random_string;
 	}
-
+	rehash = function()
+	{
+		code_challenge = _generate_challenge(code_verifier)
+	}
 	_generate_challenge = function(_code_verifier)
 	{
-		var _hash = string_sha256(_code_verifier)
-		return HexToBase64(string(_hash));
+		if(os_browser != browser_not_a_browser)
+		{
+			 get_code_challenge(_code_verifier);
+		} 
+		else if(os_type == os_windows)
+		{
+			var _hash = string_sha256(_code_verifier)
+			return HexToBase64(string(_hash));
+		}
+		return "";
 	}
 	
 	code_verifier = _generate_nonce();
-	code_challenge = _generate_challenge(code_verifier);
+	code_challenge = "";
+	rehash();
 	
-
 }

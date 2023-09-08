@@ -12,17 +12,23 @@
   "androidsourcedir": "",
   "author": "",
   "classname": "",
-  "copyToTargets": 64,
+  "copyToTargets": 96,
   "date": "2023-09-05T13:01:35.603265+02:00",
   "description": "",
   "exportToGame": true,
   "extensionVersion": "0.0.1",
   "files": [
-    {"resourceType":"GMExtensionFile","resourceVersion":"1.0","name":"","constants":[],"copyToTargets":-1,"filename":"PKCE.dll","final":"","functions":[
+    {"resourceType":"GMExtensionFile","resourceVersion":"1.0","name":"","constants":[],"copyToTargets":64,"filename":"PKCE.dll","final":"","functions":[
         {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"HexToBase64","argCount":0,"args":[
             1,
           ],"documentation":"","externalName":"HexToBase64","help":"","hidden":false,"kind":1,"returnType":1,},
       ],"init":"","kind":1,"order":[],"origname":"","ProxyFiles":[],"uncompress":false,"usesRunnerInterface":false,},
+    {"resourceType":"GMExtensionFile","resourceVersion":"1.0","name":"","constants":[],"copyToTargets":32,"filename":"javascript.js","final":"","functions":[
+        {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"get_current_url","argCount":0,"args":[],"documentation":"","externalName":"get_current_url","help":"","hidden":false,"kind":5,"returnType":1,},
+        {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"get_code_challenge","argCount":0,"args":[
+            1,
+          ],"documentation":"","externalName":"get_code_challenge","help":"","hidden":false,"kind":5,"returnType":2,},
+      ],"init":"","kind":5,"order":[],"origname":"","ProxyFiles":[],"uncompress":false,"usesRunnerInterface":false,},
   ],
   "gradleinject": "",
   "hasConvertedCodeInjection": true,
