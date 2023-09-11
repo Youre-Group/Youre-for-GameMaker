@@ -47,7 +47,7 @@ function _request_token(_auth_code)
 	var _token_request_url = $"https://{endpoint}/oauth/token";
 	var _data = $"grant_type=authorization_code";
 	_data += $"&client_id={client_id}";
-	_data += $"&redirect_uri={url_encode(redirect_url)}";
+	_data += $"&redirect_uri={redirect_url}";
 	_data += $"&code={_auth_code}";
 	_data += $"&code_verifier={_pkce.code_verifier}";
 	_data += "&token_endpoint_auth_method=none";
@@ -125,11 +125,11 @@ function init(_endpoint, _client_id, _custom_redirect_url = undefined)
 	client_id = _client_id;
 	if(_custom_redirect_url == undefined && os_browser != browser_not_a_browser)
 	{
-		redirect_url = get_current_url();
+		redirect_url = url_encode(get_current_url());
 	} 
 	else if (os_browser != browser_not_a_browser && _custom_redirect_url != undefined)
 	{
-		redirect_url = _custom_redirect_url;
+		redirect_url = url_encode(_custom_redirect_url);
 	}
 
 }
@@ -138,9 +138,10 @@ function init(_endpoint, _client_id, _custom_redirect_url = undefined)
 
 function _show_login()
 {
+	
 	 var _url = $"https://{endpoint}/authorize?";
         _url += $"client_id={client_id}";
-        _url += $"&redirect_uri={url_encode(redirect_url)}";
+        _url += $"&redirect_uri={redirect_url}";
         _url += "&response_type=code";
         _url += "&token_endpoint_auth_method=none";
         _url += "&scope=openid%20email%20profile";
