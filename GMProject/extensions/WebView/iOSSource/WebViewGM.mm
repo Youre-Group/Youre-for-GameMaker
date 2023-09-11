@@ -11,64 +11,77 @@ extern int g_DeviceHeight;
 @implementation WebViewGM
 
 -(id)init {
-  if ( self = [super init] )
-  {
-     
-    return self;
-  }
+    if ( self = [super init] )
+    {
+        
+        return self;
+    }
 }
 
 -(void) WebView_Create:(NSString*) url
 {
-  CGFloat width = CGRectGetWidth(UIScreen.mainScreen.bounds);
-  CGFloat height = CGRectGetHeight(UIScreen.mainScreen.bounds);
-  CGRect mCGRectMake = CGRectMake(0,0, width, height);
-   
-  WKWebViewConfiguration *webConfiguration = [WKWebViewConfiguration new];
-  self.webView = [[WKWebView alloc] initWithFrame:mCGRectMake configuration:webConfiguration];
-  self.webView.UIDelegate = self;
-  self.webView.navigationDelegate = self;
-   
-  NSString *urlString = [[NSString stringWithFormat:@"%@", url] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-
-  NSURL *nsurl = [NSURL URLWithString:urlString];
-   
-  NSURLRequest *request = [NSURLRequest requestWithURL:nsurl];
-  [self.webView loadRequest:request];
-  [g_glView addSubview:self.webView];
-   
-  self.webView.translatesAutoresizingMaskIntoConstraints = NO;
-  [g_glView addConstraints:@[
-                [NSLayoutConstraint constraintWithItem:self.webView
-                              attribute:NSLayoutAttributeBottom
-                              relatedBy:NSLayoutRelationEqual
-                                toItem:g_controller.bottomLayoutGuide
-                              attribute:NSLayoutAttributeBottom
-                              multiplier:1
-                               constant:0],
-                [NSLayoutConstraint constraintWithItem:self.webView
-                              attribute:NSLayoutAttributeTop
-                              relatedBy:NSLayoutRelationEqual
-                                toItem:g_controller.view
-                              attribute:NSLayoutAttributeTop
-                              multiplier:1
-                               constant:0],
-                [NSLayoutConstraint constraintWithItem:self.webView
-                               attribute:NSLayoutAttributeLeft
-                               relatedBy:NSLayoutRelationEqual
-                                toItem:g_controller.view
-                               attribute:NSLayoutAttributeLeft
-                              multiplier:1
-                               constant:0],
-                 [NSLayoutConstraint constraintWithItem:self.webView
-                               attribute:NSLayoutAttributeRight
-                               relatedBy:NSLayoutRelationEqual
-                                 toItem:g_controller.view
-                               attribute:NSLayoutAttributeRight
-                               multiplier:1
-                                constant:0]
-                ]];
+    CGFloat width = CGRectGetWidth(UIScreen.mainScreen.bounds);
+    CGFloat height = CGRectGetHeight(UIScreen.mainScreen.bounds);
+    CGRect mCGRectMake = CGRectMake(0,0, width, height);
+    
+    WKWebViewConfiguration *webConfiguration = [WKWebViewConfiguration new];
+    
+    self.webView = [[WKWebView alloc] initWithFrame:mCGRectMake configuration:webConfiguration];
+    self.webView.UIDelegate = self;
+    self.webView.navigationDelegate = self;
+    
+    NSString *urlString = [[NSString stringWithFormat:@"%@", url] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    
+    NSURL *nsurl = [NSURL URLWithString:urlString];
+    
+    NSURLRequest *request = [NSURLRequest requestWithURL:nsurl];
+    [self.webView loadRequest:request];
+    [g_glView addSubview:self.webView];
+    
+    self.webView.translatesAutoresizingMaskIntoConstraints = NO;
+    [g_glView addConstraints:@[
+        [NSLayoutConstraint constraintWithItem:self.webView
+                                     attribute:NSLayoutAttributeBottom
+                                     relatedBy:NSLayoutRelationEqual
+                                        toItem:g_controller.bottomLayoutGuide
+                                     attribute:NSLayoutAttributeBottom
+                                    multiplier:1
+                                      constant:0],
+        [NSLayoutConstraint constraintWithItem:self.webView
+                                     attribute:NSLayoutAttributeTop
+                                     relatedBy:NSLayoutRelationEqual
+                                        toItem:g_controller.view
+                                     attribute:NSLayoutAttributeTop
+                                    multiplier:1
+                                      constant:0],
+        [NSLayoutConstraint constraintWithItem:self.webView
+                                     attribute:NSLayoutAttributeLeft
+                                     relatedBy:NSLayoutRelationEqual
+                                        toItem:g_controller.view
+                                     attribute:NSLayoutAttributeLeft
+                                    multiplier:1
+                                      constant:0],
+        [NSLayoutConstraint constraintWithItem:self.webView
+                                     attribute:NSLayoutAttributeRight
+                                     relatedBy:NSLayoutRelationEqual
+                                        toItem:g_controller.view
+                                     attribute:NSLayoutAttributeRight
+                                    multiplier:1
+                                      constant:0]
+    ]];
 }
+- (void)webView:(WKWebView *)webView decidePolicyForNavigationAction:(WKNavigationAction *)navigationAction decisionHandler:(void (^)(WKNavigationActionPolicy))decisionHandler {
+    NSString *nsURL = webView.URL.absoluteString;
+    const char* pcURL = [nsURL UTF8String];
+    int dsMapIndex = CreateDsMap(3,
+      "type", 0.0, "WebView",
+      "event", 0.0, "onAddressChange",
+      "url", 0.0, pcURL
+    );
+    CreateAsynEventWithDSMap(dsMapIndex,EVENT_OTHER_SOCIAL);
+    decisionHandler(WKNavigationActionPolicyAllow);
+}
+
 
 - (void)webViewDidClose:(WKWebView *)webView;
 {
@@ -83,7 +96,7 @@ extern int g_DeviceHeight;
 - (void)webView:(WKWebView *)webView didFinishNavigation:(WKNavigation *)navigation {
   NSString *nsURL = webView.URL.absoluteString;
   const char* pcURL = [nsURL UTF8String];
-  int dsMapIndex = CreateDsMap(2,
+  int dsMapIndex = CreateDsMap(3,
     "type", 0.0, "WebView",
     "event", 0.0, "onAddressChange",
     "url", 0.0, pcURL

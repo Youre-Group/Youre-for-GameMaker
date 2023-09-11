@@ -18,7 +18,7 @@ function logout()
 		return;
 	}
 	
-	ini_open("youre.cache");
+	ini_open("youre.ini");
 	ini_write_string("session", "access_token", "");
 	ini_close();
 	
@@ -94,11 +94,9 @@ function _on_userinfo_received(_userinfo_data)
 
 function _on_tokendata_received(_token_data)
 {
-	
-	ini_open("youre.cache");
+	ini_open("youre.ini");
 	ini_write_string("session", "access_token",_token_data[?"access_token"]);
 	ini_close();
-	
 	_request_userinfo(_token_data[?"access_token"]);
 }
 
@@ -112,9 +110,7 @@ function _request_userinfo(_access_token)
 
 function _on_request_userinfo_failed()
 {
-	ini_open("youre.cache");
-	ini_write_string("session", "access_token", "");
-	ini_close();
+	logout();
 	authenticate(width, height, success_callback);
 }
 
@@ -144,10 +140,16 @@ function _show_login()
         _url += $"&redirect_uri={redirect_url}";
         _url += "&response_type=code";
         _url += "&token_endpoint_auth_method=none";
-        _url += "&scope=openid%20email%20profile";
+  
+	if(os_type == os_ios)
+	{
+		_url += "&scope=openid email profile";
+	} else {
+		_url += "&scope=openid%20email%20profile";
+	}
+     
         _url += $"&code_challenge={_pkce.code_challenge}";
         _url += "&code_challenge_method=S256";
-	
 	if(os_type == os_windows && os_browser == browser_not_a_browser)
 	{
 		cef_init(width, height, _url);
@@ -165,7 +167,7 @@ function _show_login()
 	}
 	else if(os_browser != browser_not_a_browser)
 	{
-		ini_open("youre.cache");
+		ini_open("youre.ini");
 		ini_write_string("cache","code_verifier",_pkce.code_verifier);
 		ini_close();
 		url_open(_url);
@@ -202,7 +204,7 @@ function authenticate(_width, _height, _on_success_callback)
 		var _has_code = string_count("code=",_current_url)==1;
 		if(_has_code)
 		{
-			ini_open("youre.cache");
+			ini_open("youre.ini");
 			verifier = ini_read_string("cache", "code_verifier", "");
 			ini_close();
 			_pkce.code_verifier = verifier;
@@ -212,7 +214,7 @@ function authenticate(_width, _height, _on_success_callback)
 		}
 	}
 
-	ini_open("youre.cache");
+	ini_open("youre.ini");
 	var _access_token = ini_read_string("session", "access_token", "");
 	ini_close();
 	
@@ -221,7 +223,6 @@ function authenticate(_width, _height, _on_success_callback)
 		_request_userinfo(_access_token);
 		return;
 	}
-
 
 	if(_pkce.code_challenge == "")
 	{
