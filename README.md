@@ -17,7 +17,7 @@ youre_auth =  instance_create_depth(0,0,0,obj_youre_auth);
 // Following data is for testing only, YOURE Games will provide you with actual data
 var _domain = "stage-youre-id.eu.auth0.com";
 var _client_id = "{YOURE_CLIENT_ID}";
-var _custom_redirect_url = "{GAME_URL_FOR_REDIRECT}"; // optional
+var _custom_redirect_url = "{GAME_URL_FOR_REDIRECT}"; // optional, only relevant for web platform
 
 youre_auth.init(_domain,_client_id,_custom_redirect_url);
 
