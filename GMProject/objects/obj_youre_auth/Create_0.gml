@@ -35,7 +35,7 @@ function close()
 		_update_windows_cef = false;
 	}
 
-	if(os_type == os_android)
+	if(os_type == os_android || os_type == os_ios)
 	{
 		WebView_Destroy();
 	}
@@ -67,7 +67,7 @@ function _check_url(_url)
 	
 	if(string_starts_with(_url,redirect_url)){
 		
-		if(os_type == os_android)
+		if(os_type == os_android || os_type == os_ios)
 		{
 			WebView_Destroy();
 		}
@@ -127,7 +127,7 @@ function init(_endpoint, _client_id, _custom_redirect_url = undefined)
 	{
 		redirect_url = get_current_url();
 	} 
-	else if (_custom_redirect_url != undefined)
+	else if (os_browser != browser_not_a_browser && _custom_redirect_url != undefined)
 	{
 		redirect_url = _custom_redirect_url;
 	}
@@ -157,7 +157,7 @@ function _show_login()
 		_canvas.y = window_get_height()/2-height*0.5;
 		_update_webview = true;
 	} 
-	else if(os_type == os_android)
+	else if(os_type == os_android || os_type == os_ios)
 	{
 		WebView_Create(_url);
 		_update_webview = true;
@@ -220,6 +220,7 @@ function authenticate(_width, _height, _on_success_callback)
 		_request_userinfo(_access_token);
 		return;
 	}
+
 
 	if(_pkce.code_challenge == "")
 	{

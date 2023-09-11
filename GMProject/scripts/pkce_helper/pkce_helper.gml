@@ -31,6 +31,10 @@ function PKCEHelper() constructor {
 		{
 			return getCodeChallenge(_code_verifier);
 		}
+		else if(os_type == os_ios)
+		{
+			return getCodeChallenge(_code_verifier);
+		}
 		
 		return "";
 	}

@@ -11,8 +11,8 @@
   "androidProps": true,
   "androidsourcedir": "",
   "author": "",
-  "classname": "",
-  "copyToTargets": 104,
+  "classname": "YoureGM",
+  "copyToTargets": 108,
   "date": "2023-09-05T13:01:35.603265+02:00",
   "description": "",
   "exportToGame": true,
@@ -29,7 +29,7 @@
             1,
           ],"documentation":"","externalName":"get_code_challenge","help":"","hidden":false,"kind":5,"returnType":2,},
       ],"init":"","kind":5,"order":[],"origname":"","ProxyFiles":[],"uncompress":false,"usesRunnerInterface":false,},
-    {"resourceType":"GMExtensionFile","resourceVersion":"1.0","name":"","constants":[],"copyToTargets":8,"filename":"Youre.ext","final":"","functions":[
+    {"resourceType":"GMExtensionFile","resourceVersion":"1.0","name":"","constants":[],"copyToTargets":12,"filename":"Youre.ext","final":"","functions":[
         {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"getCodeChallenge","argCount":0,"args":[
             1,
           ],"documentation":"","externalName":"","help":"","hidden":false,"kind":4,"returnType":1,},
@@ -47,7 +47,7 @@
   "ioscodeinjection": "",
   "iosdelegatename": "",
   "iosplistinject": "",
-  "iosProps": false,
+  "iosProps": true,
   "iosSystemFrameworkEntries": [],
   "iosThirdPartyFrameworkEntries": [],
   "license": "",
