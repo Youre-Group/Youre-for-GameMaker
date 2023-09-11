@@ -4,7 +4,7 @@
 
 
 ### Supported Platforms: 
-Desktop (Windows), HTML5
+Desktop (Windows), HTML5, Android, iOS
 
 ### Install
 Download the lastest release and import (Local Package) it to your GameMaker Studio Project
