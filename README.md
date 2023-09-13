@@ -32,7 +32,10 @@ var _height = 750;
 youre_auth.authenticate( _width, _height, _on_auth_success);
 
 ```
+## HTML5 Installation:
+The authentication process works with a redirect. The user is taken out of the app for login and then brought back to the game application. To do this, a redirect URL (typically the URL of the game) must be specified in the authentication configuration. This URL is used to pass the required login data to the game application.
 
+ 
 ## Windows Desktop Installation:
 Do not remove the 'locales' directory within 'datafiles' directory.
   
